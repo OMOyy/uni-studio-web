@@ -17,8 +17,9 @@ import { Styles } from "./components/tabs/Styles"
 import { Purchase } from "./components/tabs/Purchase"
 import { Brand } from "./components/tabs/Brand"
 import { FAQ } from "./components/tabs/FAQ"
-
+export const dynamic = "force-dynamic"
 export default async function HomePage() {
+  
   const [
     homePage,
     homeTab,
@@ -33,6 +34,7 @@ export default async function HomePage() {
     sanityClient.fetch(purchaseQuery),
     sanityClient.fetch(brandQuery),
     sanityClient.fetch(faqQuery),
+    
   ])
   
   if (!homePage?.nav?.items?.length) {
