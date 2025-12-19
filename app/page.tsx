@@ -28,12 +28,18 @@ export default async function HomePage() {
     brand,
     faq,
   ] = await Promise.all([
-    sanityClient.fetch(homePageQuery),
-    sanityClient.fetch(homeTabQuery),
-    sanityClient.fetch(stylesQuery),
-    sanityClient.fetch(purchaseQuery),
-    sanityClient.fetch(brandQuery),
-    sanityClient.fetch(faqQuery),
+    sanityClient.fetch(homePageQuery, undefined,
+  { cache: "no-store" }),
+    sanityClient.fetch(homeTabQuery, undefined,
+  { cache: "no-store" }),
+    sanityClient.fetch(stylesQuery, undefined,
+  { cache: "no-store" }),
+    sanityClient.fetch(purchaseQuery, undefined,
+  { cache: "no-store" }),
+    sanityClient.fetch(brandQuery, undefined,
+  { cache: "no-store" }),
+    sanityClient.fetch(faqQuery, undefined,
+  { cache: "no-store" }),
     
   ])
   console.log("🔥 FETCH TIME", new Date().toISOString())
