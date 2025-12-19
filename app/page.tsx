@@ -36,7 +36,8 @@ export default async function HomePage() {
     sanityClient.fetch(faqQuery),
     
   ])
-  
+  console.log("🔥 FETCH TIME", new Date().toISOString())
+
   if (!homePage?.nav?.items?.length) {
     return <p className="p-10">請先在後台設定導覽分頁</p>
   }
