@@ -11,7 +11,7 @@ import {
   brandQuery,
   faqQuery,
 } from "@/lib/sanity/queries"
-
+ 
 import { HomeTab } from "./components/tabs/HomeTab"
 import { Styles } from "./components/tabs/Styles"
 import { Purchase } from "./components/tabs/Purchase"
