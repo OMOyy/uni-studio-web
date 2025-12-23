@@ -1,5 +1,12 @@
 import { urlFor } from "@/lib/sanity/image"
 import { SocialLinkButton } from "./SocialLinkButton"
+// app/fonts.ts
+import { Caveat } from "next/font/google"
+
+export const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+})
 
 type SocialLink = {
   platform: "instagram" | "threads"
@@ -44,14 +51,14 @@ export function Hero({ data, socialLinks }: Props) {
 
       {/* 品牌名稱 */}
       <h1
-        className="
-        font-[var(--font-playfair)]
+        className={`
+         ${caveat.className}
           text-2xl
           md:text-4xl
           tracking-[0.25em]
           text-[#8b7355]
           font-semibold
-        "
+        `}
       >
         {data.brandName}
       </h1>
