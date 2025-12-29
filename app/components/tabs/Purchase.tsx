@@ -23,7 +23,7 @@ export function Purchase({ data }: { data: PurchaseData }) {
             <div className="mx-auto max-w-3xl px-4 sm:px-6 space-y-12">
                   {/* 底部補充說明 */}
                 {data.note && (
-                    <div className="mt-16 pt-8 border-t border-[#8b7355]/10">
+                    <div className="  border-t border-[#8b7355]/10">
                         <p className="whitespace-pre-line text-sm md:text-base leading-loose text-[#6f5a43] text-center font-light">
                             {data.note}
                         </p>
