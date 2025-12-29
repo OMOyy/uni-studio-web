@@ -64,8 +64,8 @@ export function AutoCarousel({ images }: { images: any[] }) {
                         key={i}
                         onClick={() => goToSlide(i)}
                         className={`transition-all duration-300 rounded-full ${i === currentIndex
-                                ? "w-8 h-2 bg-[#8b7355]"
-                                : "w-2 h-2 bg-white/60 hover:bg-white/80"
+                            ? "w-8 h-2 bg-[#8b7355]"
+                            : "w-2 h-2 bg-white/60 hover:bg-white/80"
                             }`}
                         aria-label={`前往第 ${i + 1} 張圖片`}
                     />
@@ -100,6 +100,8 @@ export function AutoCarousel({ images }: { images: any[] }) {
 }
 
 export function HomeTab({ data }: any) {
+    //console.log("🔥 homeTab data =", data)
+
     return (
         <div className="min-h-screen bg-gradient-to-b ">
             <div className="max-w-6xl mx-auto space-y-8 px-4 sm:px-6 py-8 md:py-12">
@@ -132,6 +134,73 @@ export function HomeTab({ data }: any) {
                         <AutoCarousel images={data.carousel} />
                     </section>
                 )}
+                {/* 優惠活動區 */}
+                {data.promotions?.length > 0 && (
+                    <section className="bg-white rounded-2xl p-4 md:p-6 shadow-sm">
+                        <h3 className="text-center text-xl md:text-2xl font-semibold text-[#8b7355] mb-4">
+                            🎁 優惠活動 🎁
+                        </h3>
+
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {data.promotions
+                                .filter((img: any) => img)
+                                .map((img: any, i: number) => (
+                                    <div
+                                        key={i}
+                                        className="overflow-hidden rounded-xl shadow hover:shadow-md transition"
+                                    >
+                                        <img
+                                            src={urlFor(img).width(800).url()}
+                                            alt={`優惠活動 ${i + 1}`}
+                                            className="w-full h-[220px] object-cover hover:scale-105 transition-transform duration-300"
+                                        />
+                                    </div>
+                                ))}
+                        </div>
+                    </section>
+                )}
+
+
+                {/* 包裝展示區 */}
+                {data.packaging?.length > 0 && (
+                    <section className="bg-white rounded-2xl p-4 md:p-6 shadow-sm space-y-6">
+                        <h3 className="text-center text-xl md:text-2xl font-semibold text-[#8b7355]">
+                            🎀 包裝展示 🎀
+                        </h3>
+
+                        <div className="space-y-6">
+                            {data.packaging
+                                .filter((item: any) => item.image)
+                                .map((item: any, i: number) => (
+                                    <div
+                                        key={i}
+                                        className="flex flex-col md:flex-row gap-4 md:gap-6 items-center"
+                                    >
+                                        <div className="w-full md:w-1/2 overflow-hidden rounded-xl shadow">
+                                            <img
+                                                src={urlFor(item.image).width(800).url()}
+                                                alt={item.title}
+                                                className="w-full h-[220px] object-cover hover:scale-105 transition-transform duration-300"
+                                            />
+                                        </div>
+
+                                        <div className="w-full md:w-1/2 space-y-2 text-[#6f5a43]">
+                                            <h4 className="text-lg md:text-xl font-semibold">
+                                                {item.title}
+                                            </h4>
+                                            {item.desc && (
+                                                <p className="text-sm md:text-base leading-relaxed whitespace-pre-line">
+                                                    {item.desc}
+                                                </p>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                        </div>
+                    </section>
+                )}
+
+
 
             </div>
         </div>

@@ -24,12 +24,21 @@ export const homeTabQuery = `
 *[_type == "homeTab"][0]{
   announcements[]{
     title,
-    content,
-    highlight
+    content
   },
-  carousel
+  carousel,
+
+
+  promotions,
+
+  packaging[]{
+    title,
+    desc,
+    image
+  }
 }
 `
+
 export const stylesQuery = `
 *[_type == "stylesPage"][0]{
   pageIntro {
