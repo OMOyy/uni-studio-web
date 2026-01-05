@@ -138,7 +138,7 @@ export function HomeTab({ data }: any) {
                 {data.promotions?.length > 0 && (
                     <section className="bg-white rounded-2xl p-4 md:p-6 shadow-sm">
                         <h3 className="text-center text-xl md:text-2xl font-semibold text-[#8b7355] mb-4">
-                            🎁 優惠活動 🎁
+                            優惠活動
                         </h3>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -152,7 +152,7 @@ export function HomeTab({ data }: any) {
                                         <img
                                             src={urlFor(img).width(800).url()}
                                             alt={`優惠活動 ${i + 1}`}
-                                            className="w-full h-[220px] object-cover hover:scale-105 transition-transform duration-300"
+                                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                                         />
                                     </div>
                                 ))}
@@ -165,7 +165,7 @@ export function HomeTab({ data }: any) {
                 {data.packaging?.length > 0 && (
                     <section className="bg-white rounded-2xl p-4 md:p-6 shadow-sm space-y-6">
                         <h3 className="text-center text-xl md:text-2xl font-semibold text-[#8b7355]">
-                            🎀 包裝展示 🎀
+                            包裝展示 
                         </h3>
 
                         <div className="space-y-6">
