@@ -28,10 +28,15 @@ export const homeTabQuery = `
   },
   carousel,
 
-
   promotions,
 
   packaging[]{
+    title,
+    desc,
+    image
+  },
+
+  nailMolding[]{
     title,
     desc,
     image

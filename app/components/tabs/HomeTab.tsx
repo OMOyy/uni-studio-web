@@ -165,7 +165,7 @@ export function HomeTab({ data }: any) {
                 {data.packaging?.length > 0 && (
                     <section className="bg-white rounded-2xl p-4 md:p-6 shadow-sm space-y-6">
                         <h3 className="text-center text-xl md:text-2xl font-semibold text-[#8b7355]">
-                            包裝展示 
+                            包裝展示
                         </h3>
 
                         <div className="space-y-6">
@@ -200,7 +200,44 @@ export function HomeTab({ data }: any) {
                     </section>
                 )}
 
+                {/* 穿戴甲翻模 */}
+                {data.nailMolding?.length > 0 && (
+                    <section className="bg-white rounded-2xl p-4 md:p-6 shadow-sm space-y-6">
+                        <h3 className="text-center text-xl md:text-2xl font-semibold text-[#8b7355]">
+                            穿戴甲翻模
+                        </h3>
 
+                        <div className="space-y-6">
+                            {data.nailMolding
+                                .filter((item: any) => item.image)
+                                .map((item: any, i: number) => (
+                                    <div
+                                        key={i}
+                                        className="flex flex-col md:flex-row gap-4 md:gap-6 items-center"
+                                    >
+                                        <div className="w-full md:w-1/2 overflow-hidden rounded-xl shadow">
+                                            <img
+                                                src={urlFor(item.image).width(800).url()}
+                                                alt={item.title}
+                                                className="w-full h-[220px] object-cover hover:scale-105 transition-transform duration-300"
+                                            />
+                                        </div>
+
+                                        <div className="w-full md:w-1/2 space-y-2 text-[#6f5a43]">
+                                            <h4 className="text-lg md:text-xl font-semibold">
+                                                {item.title}
+                                            </h4>
+                                            {item.desc && (
+                                                <p className="text-sm md:text-base leading-relaxed whitespace-pre-line">
+                                                    {item.desc}
+                                                </p>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                        </div>
+                    </section>
+                )}
 
             </div>
         </div>
