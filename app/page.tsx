@@ -17,6 +17,7 @@ import { Styles } from "./components/tabs/Styles"
 import { Purchase } from "./components/tabs/Purchase"
 import { Brand } from "./components/tabs/Brand"
 import { FAQ } from "./components/tabs/FAQ"
+import { VisitorCounter } from "./components/VisitorCounter"
 export const dynamic = "force-dynamic"
 export default async function HomePage() {
   
@@ -68,6 +69,8 @@ export default async function HomePage() {
           faq: <FAQ data={faq} />,
         }}
       />
+
+      <VisitorCounter />
 
       {/* iOS safe area */}
       <div className="h-16" />
