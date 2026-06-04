@@ -213,13 +213,13 @@ export function HomeTab({ data }: any) {
                                 .map((item: any, i: number) => (
                                     <div
                                         key={i}
-                                        className="flex flex-col md:flex-row gap-4 md:gap-6 items-center"
+                                        className="flex flex-col md:flex-row gap-4 md:gap-6 items-start"
                                     >
-                                        <div className="w-full md:w-1/2 overflow-hidden rounded-xl shadow">
+                                        <div className="w-full md:w-1/2 overflow-hidden rounded-xl shadow bg-[#f5efe8]">
                                             <img
-                                                src={urlFor(item.image).width(800).url()}
+                                                src={urlFor(item.image).width(1200).url()}
                                                 alt={item.title}
-                                                className="w-full h-[220px] object-cover hover:scale-105 transition-transform duration-300"
+                                                className="block w-full h-auto max-w-full object-contain"
                                             />
                                         </div>
 

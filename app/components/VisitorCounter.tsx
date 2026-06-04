@@ -19,17 +19,32 @@ export function VisitorCounter() {
   useEffect(() => {
     let cancelled = false
 
+    async function fetchStats(method: "GET" | "POST") {
+      const res = await fetch("/api/visit", { method })
+      if (!res.ok) return null
+      return (await res.json()) as VisitStats
+    }
+
     async function load() {
       const alreadyRecorded = sessionStorage.getItem(SESSION_KEY) === "1"
 
       try {
-        const res = await fetch("/api/visit", {
-          method: alreadyRecorded ? "GET" : "POST",
-        })
-        if (!res.ok) return
-        const data = (await res.json()) as VisitStats
-        if (!cancelled) setStats(data)
-        if (!alreadyRecorded) sessionStorage.setItem(SESSION_KEY, "1")
+        let data: VisitStats | null = null
+
+        if (alreadyRecorded) {
+          data = await fetchStats("GET")
+        } else {
+          const recorded = await fetchStats("POST")
+          if (recorded) {
+            data = recorded
+            sessionStorage.setItem(SESSION_KEY, "1")
+          } else {
+            // 正式環境常漏設 SANITY_API_WRITE_TOKEN，POST 503；仍讀取並顯示既有數字
+            data = await fetchStats("GET")
+          }
+        }
+
+        if (!cancelled && data) setStats(data)
       } catch {
         // 靜默失敗，不影響主要頁面
       }
